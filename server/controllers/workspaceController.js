@@ -85,7 +85,7 @@ export const addMember = async (req, res) => {
       return res.status(400).json({ message: "User is already a member" });
     }
 
-    const member = await prisma.workspace.create({
+    const member = await prisma.workspaceMember.create({
       data: {
         userId: user.id,
         workspaceId,
