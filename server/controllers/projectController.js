@@ -20,7 +20,7 @@ export const createProject = async (req, res) => {
     // Check if user has admin role for workspace
     const workspace = await prisma.workspace.findUnique({
       where: {
-        workspaceId,
+        id: workspaceId,
       },
       include: { members: { include: { user: true } } },
     });
@@ -56,7 +56,7 @@ export const createProject = async (req, res) => {
         progress,
         team_lead: teamLead?.id,
         start_date: start_date ? new Date(start_date) : null,
-        start_date: end_date ? new Date(end_date) : null,
+        end_date: end_date ? new Date(end_date) : null,
       },
     });
 
@@ -159,7 +159,7 @@ export const updateProject = async (req, res) => {
         progress,
         // team_lead: teamLead?.id,
         start_date: start_date ? new Date(start_date) : null,
-        start_date: end_date ? new Date(end_date) : null,
+        end_date: end_date ? new Date(end_date) : null,
       },
     });
 
